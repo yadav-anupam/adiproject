@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Embedded Control Panel</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 16px;
+    }
+    .panel {
+      width: 100%;
+      max-width: 360px;
+      border: 1px solid #000000;
+      padding: 24px 20px;
+    }
+    .header {
+      font-weight: bold;
+      text-align: center;
+      border-bottom: 1px solid #000000;
+      padding-bottom: 12px;
+      margin-bottom: 24px;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px dashed #e5e7eb;
+    }
+    .row:nth-last-child(2) {
+      border-bottom: 1px solid #000000;
+      margin-bottom: 12px;
+    }
+    .row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .label {
+      font-size: 14px;
+      font-weight: bold;
+    }
+    /* Toggle Switch using CSS checked state */
+    .toggle-container {
+      display: inline-block;
+      cursor: pointer;
+    }
+    .toggle-input {
+      display: none;
+    }
+    .toggle {
+      width: 44px;
+      height: 24px;
+      background-color: #ffffff;
+      border: 1px solid #000000;
+      position: relative;
+    }
+    .knob {
+      width: 18px;
+      height: 18px;
+      background-color: #000000;
+      border: 1px solid #000000;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+    }
+    .toggle-input:checked + .toggle {
+      background-color: #2563eb;
+    }
+    .toggle-input:checked + .toggle .knob {
+      background-color: #ffffff;
+      transform: translateX(20px);
+    }
+    /* Fan Selector using Radio Buttons */
+    .fan-ctrl {
+      display: flex;
+      justify-content: space-between;
+      width: 180px;
+      position: relative;
+    }
+    .fan-line {
+      position: absolute;
+      top: 24px;
+      left: 14px;
+      right: 14px;
+      height: 1px;
+      background-color: #000000;
+      z-index: 1;
+    }
+    .fan-opt {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 11px;
+      font-weight: bold;
+      z-index: 2;
+      cursor: pointer;
+    }
+    .fan-opt span {
+      margin-bottom: 6px;
+      line-height: 1;
+    }
+    .fan-input {
+      display: none;
+    }
+    .fan-dot {
+      width: 14px;
+      height: 14px;
+      border: 1px solid #000000;
+      background-color: #ffffff;
+      border-radius: 50%;
+    }
+    .fan-input:checked + .fan-dot {
+      background-color: #2563eb;
+    }
+  </style>
+</head>
+<body>
+  <div class="panel" id="panel">
+    <div class="header">ROOM - 1</div>
+    
+    <div class="row">
+      <span class="label">Light Bulb 1</span>
+      <label class="toggle-container">
+        <input type="checkbox" class="toggle-input" checked>
+        <div class="toggle"><div class="knob"></div></div>
+      </label>
+    </div>
+    
+    <div class="row">
+      <span class="label">Light Bulb 2</span>
+      <label class="toggle-container">
+        <input type="checkbox" class="toggle-input">
+        <div class="toggle"><div class="knob"></div></div>
+      </label>
+    </div>
+    
+    <div class="row">
+      <span class="label">Night Light</span>
+      <label class="toggle-container">
+        <input type="checkbox" class="toggle-input" checked>
+        <div class="toggle"><div class="knob"></div></div>
+      </label>
+    </div>
+    
+    <div class="row">
+      <span class="label">Fan</span>
+      <div class="fan-ctrl">
+        <div class="fan-line"></div>
+        
+        <label class="fan-opt">
+          <span>OFF</span>
+          <input type="radio" name="fan" class="fan-input">
+          <div class="fan-dot"></div>
+        </label>
+        
+        <label class="fan-opt">
+          <span>1</span>
+          <input type="radio" name="fan" class="fan-input">
+          <div class="fan-dot"></div>
+        </label>
+        
+        <label class="fan-opt">
+          <span>2</span>
+          <input type="radio" name="fan" class="fan-input" checked>
+          <div class="fan-dot"></div>
+        </label>
+        
+        <label class="fan-opt">
+          <span>3</span>
+          <input type="radio" name="fan" class="fan-input">
+          <div class="fan-dot"></div>
+        </label>
+        
+        <label class="fan-opt">
+          <span>4</span>
+          <input type="radio" name="fan" class="fan-input">
+          <div class="fan-dot"></div>
+        </label>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
